@@ -1,0 +1,19 @@
+@if (pokemon) {
+  <div class="card card-compact shadow-xl max-w-md max-h-60">
+    <figure class="h-screen">
+      <img
+        src="{{ pokemon.cover }}"
+        alt="{{ pokemon.name }}"
+        class="h-auto object-scale-down max-w-full drop-shadow-md rounded-md"
+      />
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">{{ pokemon.name }}</h2>
+      <div class="card-actions justify-end">
+        <button class="btn btn-primary">Buy Now</button>
+      </div>
+    </div>
+  </div>
+} @else {
+  <span className="loading loading-spinner text-primary"></span>
+}
