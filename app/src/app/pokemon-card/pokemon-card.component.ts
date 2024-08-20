@@ -6,7 +6,6 @@ import { PokemonService } from '../pokemon/pokemon.service';
   standalone: true,
   imports: [],
   templateUrl: './pokemon-card.component.html',
-  styleUrl: './pokemon-card.component.scss',
 })
 export class PokemonCardComponent {
   pokemon: any;

@@ -1,9 +1,17 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { PokemonService } from './pokemon/pokemon.service';
 
 @Component({
   selector: 'pokedex',
   templateUrl: './pokedex-app.component.html',
-  styleUrl: './pokedex-app.component.scss'
 })
-export class PokedexAppComponent {}
+export class PokedexAppComponent {
+  pokemons: any;
+  constructor(private pokemonService: PokemonService) {
+    this.pokemons = [];
+  }
+
+  ngOnInit() {
+    this.pokemonService.all(1).subscribe((x) => (this.pokemons = x));
+  }
+}
