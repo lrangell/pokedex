@@ -8,12 +8,18 @@ import { PokemonService } from './pokemon/pokemon.service';
 import { HttpClient } from '@angular/common/http';
 import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { PokemonsViewComponent } from './pokemons-view/pokemons-view.component';
 
 @NgModule({
-  imports: [BrowserModule, RouterModule.forRoot(routes), PokemonCardComponent],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    PokemonCardComponent,
+    PokemonsViewComponent,
+  ],
   providers: [PokemonService, provideHttpClient(withFetch())],
   declarations: [PokedexAppComponent],
   bootstrap: [PokedexAppComponent],
-  exports: [PokemonCardComponent],
+  exports: [PokemonCardComponent, PokemonsViewComponent],
 })
 export class PokedexAppModule {}
