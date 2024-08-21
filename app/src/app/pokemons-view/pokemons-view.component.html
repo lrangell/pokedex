@@ -2,13 +2,6 @@
   class="max-h-screen flex flex-col gap-6 items-center overflow-scroll"
   id="pokedex-view"
 >
-  <h1 id="title">Pokedex</h1>
-  <input
-    type="text"
-    placeholder="search"
-    class="input input-bordered input-primary w-[20vw] min-h-12 mb-10"
-    id="search"
-  />
   <div class="grid grid-cols-7 grid-rows-3 gap-6">
     @for (pokemon of pokemons; track pokemon) {
       <pokemon-card [name]="pokemon"></pokemon-card>
