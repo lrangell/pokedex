@@ -9,7 +9,12 @@
         class="object-contain w-24 h-24 max-h-fit drop-shadow-md rounded-md"
       />
     </figure>
-    <button class="btn btn-primary w-full h-1">View</button>
+    <a
+      [routerLink]="['/pokemon', pokemon.name]"
+      class="btn btn-primary w-full h-1"
+    >
+      View
+    </a>
   </div>
 } @else {
   <span className="loading loading-spinner text-primary"></span>

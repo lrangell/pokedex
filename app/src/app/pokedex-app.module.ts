@@ -17,10 +17,16 @@ import { HeaderComponent } from './header/header.component';
     RouterModule.forRoot(routes),
     PokemonCardComponent,
     PokemonsViewComponent,
+    HeaderComponent,
   ],
   providers: [PokemonService, provideHttpClient(withFetch())],
   declarations: [PokedexAppComponent],
   bootstrap: [PokedexAppComponent],
-  exports: [PokemonCardComponent, PokemonsViewComponent, HeaderComponent],
+  exports: [
+    PokemonCardComponent,
+    PokemonsViewComponent,
+    HeaderComponent,
+    RouterModule,
+  ],
 })
 export class PokedexAppModule {}

@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { PokemonService } from '../pokemon/pokemon.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'pokemon-card',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './pokemon-card.component.html',
 })
 export class PokemonCardComponent {
