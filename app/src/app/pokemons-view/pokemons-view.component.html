@@ -1,5 +1,5 @@
 <div
-  class="max-h-screen flex flex-col gap-6 items-center overflow-scroll"
+  class="max-h-full flex flex-col gap-6 items-center overflow-scroll"
   id="pokedex-view"
 >
   <div class="grid grid-cols-7 grid-rows-3 gap-6">
@@ -15,7 +15,7 @@
     </button>
 
     @if (this.page > 1) {
-      <button (click)="scrollTo('title')" class="btn btn-primary">
+      <button (click)="scrollTo('title')" class="btn btn-accent">
         Go to top
       </button>
     }
