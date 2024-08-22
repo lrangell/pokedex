@@ -1,6 +1,10 @@
 import { Controller, Get, Param } from "@nestjs/common";
 
-function parsePokemon(pokemon: any) {
+type Pokemon = {
+  name: string;
+  cover: string;
+};
+function parsePokemon(pokemon: any): Pokemon {
   return {
     name: pokemon.name,
     cover: pokemon.sprites?.other?.dream_world?.front_default,
@@ -13,14 +17,15 @@ export class PokemonController {
   perPage = 20;
 
   @Get(":name")
-  async find(@Param() params: any): Promise<any> {
-    return await fetch(`${this.baseURI}/pokemon/${params.name}`)
+  async find(@Param("name") name: string): Promise<Pokemon | null> {
+    return await fetch(`${this.baseURI}/pokemon/${name}`)
       .then((x) => x.json())
-      .then(parsePokemon);
+      .then(parsePokemon)
+      .catch(() => null);
   }
 
   @Get("all/:page")
-  async list(@Param("page") page: any): Promise<any> {
+  async list(@Param("page") page: any): Promise<string[]> {
     const offset = parseInt(page) * this.perPage;
     const names = await fetch(
       `${this.baseURI}/pokemon?limit=${this.perPage}&offset=${offset}`,
