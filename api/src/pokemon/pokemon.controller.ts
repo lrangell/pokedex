@@ -3,18 +3,29 @@ import { Controller, Get, Param } from "@nestjs/common";
 type Pokemon = {
   name: string;
   cover: string;
+  cry: string;
+  height: number;
+  weight: number;
+  stats: Record<string, number>;
 };
 function parsePokemon(pokemon: any): Pokemon {
   return {
     name: pokemon.name,
     cover: pokemon.sprites?.other?.dream_world?.front_default,
+    cry: pokemon.cries.latest,
+    height: pokemon.height,
+    weight: pokemon.weight,
+    stats: pokemon.stats.reduce(
+      (acc, s) => ({ ...acc, [s.stat.name]: s.base_stat }),
+      {},
+    ),
   };
 }
 
 @Controller("pokemon")
 export class PokemonController {
   baseURI = "https://pokeapi.co/api/v2";
-  perPage = 20;
+  perPage = 21;
 
   @Get(":name")
   async find(@Param("name") name: string): Promise<Pokemon | null> {

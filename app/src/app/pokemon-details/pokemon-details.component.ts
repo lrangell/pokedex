@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 })
 export class PokemonDetailsComponent {
   pokemon: any = null;
+  stats: string[] = [];
   @Input() name!: string;
 
   constructor(
@@ -20,6 +21,10 @@ export class PokemonDetailsComponent {
 
   ngOnInit() {
     const name = this.route.snapshot.paramMap.get('name');
-    this.pokemonService.find(name!).subscribe((p) => (this.pokemon = p));
+    this.pokemonService.find(name!).subscribe((p) => {
+      this.pokemon = p;
+      this.stats = Object.keys(this.pokemon.stats);
+    });
+    this.stats = this.pokemon ? Object.keys(this.pokemon.stats) : [];
   }
 }

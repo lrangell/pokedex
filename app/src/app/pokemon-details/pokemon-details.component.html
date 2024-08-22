@@ -1,11 +1,26 @@
-<div
-  class="flex flex-col gap-12 items-center bg-zinc-700 bg-opacity-50 ml-60 mr-60 rounded-lg shadow-lg"
->
-  <h1 class="text-7xl">{{ pokemon?.name }}</h1>
-  <img
-    src="{{ pokemon?.cover }}"
-    alt="{{ pokemon?.name }}"
-    class="object-contain w-24 h-24 max-h-fit drop-shadow-md rounded-md"
-  />
-  <button [routerLink]="['/']" class="btn btn-primary">Back</button>
-</div>
+@if (pokemon) {
+  <div
+    class="flex flex-col gap-12 items-center bg-zinc-700 bg-opacity-50 ml-60 mr-60 rounded-lg shadow-lg"
+  >
+    <h1 class="text-7xl">{{ pokemon?.name }}</h1>
+    <img
+      src="{{ pokemon?.cover }}"
+      alt="{{ pokemon?.name }}"
+      class="object-contain w-24 h-24 max-h-fit drop-shadow-md rounded-md"
+    />
+    <audio src="{{ pokemon.cry }}" controls="true"></audio>
+
+    <div class="flex flex-col gap-4 items-center">
+      <p class="text-xl">Stats</p>
+      <div class="border-2 p-2">
+        @for (stat of stats; track stat) {
+          <div class="flex flex-row gap-4 justify-between">
+            <p>{{ stat }}</p>
+            <p>{{ pokemon.stats[stat] }}</p>
+          </div>
+        }
+      </div>
+    </div>
+    <button [routerLink]="['/']" class="btn btn-primary">Back</button>
+  </div>
+}
